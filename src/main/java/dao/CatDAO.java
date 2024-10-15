@@ -102,6 +102,26 @@ public class CatDAO implements DAOInterface<Cat> {
 
     @Override
     public boolean delete(Cat cat) {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+
+                // thuc thi cau lenh HQL
+                // chi luu khi chua ton tai
+//                session.save(cat);
+                // them moi khi chua ton tai, cap nhat du lieu khi da ton tai
+                session.delete(cat);
+
+                tr.commit();
+
+                session.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

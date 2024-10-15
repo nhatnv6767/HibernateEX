@@ -27,8 +27,11 @@ public class TestCat {
 
 
         // test insert
-        Cat c3 = new Cat("Meo 3", new Date(System.currentTimeMillis()), Boolean.valueOf(String.valueOf(1)));
-        cat_Dao.insert(c3);
+        Cat c3 = new Cat("Meo 5Edit 2", new Date(System.currentTimeMillis()), Boolean.valueOf(String.valueOf(1)));
+        c3.setId(3);
+//        cat_Dao.insert(c3);
+
+        cat_Dao.delete(c3);
 
     }
 }
