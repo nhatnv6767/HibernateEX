@@ -19,9 +19,14 @@ public class TestCat {
 //        }
 
         // select by id
-        Cat c = new Cat();
-        c.setId(2);
-        Cat c1 = cat_Dao.selectById(c);
-        System.out.println(c1);
+//        Cat c = new Cat();
+//        c.setId(2);
+//        Cat c1 = cat_Dao.selectById(c);
+//        System.out.println(c1);
+
+
+        // test insert
+        Cat c3 = new Cat();
+
     }
 }

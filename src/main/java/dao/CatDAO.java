@@ -66,8 +66,7 @@ public class CatDAO implements DAOInterface<Cat> {
         }
     }
 
-    @Override
-    public boolean insert(Cat cat) {
+    public boolean saveOrUpdate(Cat cat) {
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if (sessionFactory != null) {
@@ -92,8 +91,13 @@ public class CatDAO implements DAOInterface<Cat> {
     }
 
     @Override
+    public boolean insert(Cat cat) {
+        return saveOrUpdate(cat);
+    }
+
+    @Override
     public boolean update(Cat cat) {
-        return false;
+        return saveOrUpdate(cat);
     }
 
     @Override
