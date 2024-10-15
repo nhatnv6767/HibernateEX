@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
+import java.sql.Date;
 import java.util.List;
 
 public class TestCat {
@@ -26,7 +27,8 @@ public class TestCat {
 
 
         // test insert
-        Cat c3 = new Cat();
+        Cat c3 = new Cat("Meo 3", new Date(System.currentTimeMillis()), Boolean.valueOf(String.valueOf(1)));
+        cat_Dao.insert(c3);
 
     }
 }

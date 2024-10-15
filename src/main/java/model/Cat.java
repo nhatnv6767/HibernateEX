@@ -15,8 +15,7 @@ public class Cat {
     public Cat() {
     }
 
-    public Cat(Integer id, String name, Date dateOfBirth, Boolean sex) {
-        this.id = id;
+    public Cat(String name, Date dateOfBirth, Boolean sex) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
