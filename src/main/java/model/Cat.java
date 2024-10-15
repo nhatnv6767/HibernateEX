@@ -1,7 +1,11 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.Date;
 
+@Entity
 public class Cat {
     private Integer id;
     private String name;
@@ -18,6 +22,8 @@ public class Cat {
         this.sex = sex;
     }
 
+    @Id // khoa chinh
+    @GeneratedValue // tu dong tang gia tri
     public Integer getId() {
         return id;
     }
