@@ -56,4 +56,14 @@ public class Cat {
     public void setSex(Boolean sex) {
         this.sex = sex;
     }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", sex=" + sex +
+                '}';
+    }
 }
