@@ -47,7 +47,7 @@ public class CatDAO implements DAOInterface<Cat> {
                 Transaction tr = session.beginTransaction();
 
                 // thuc thi cau lenh HQL
-                String hql = "from Cat c WHERE c.id:=id";
+                String hql = "from Cat c WHERE c.id=id";
                 Query query = session.createQuery(hql);
                 query.setParameter("id", cat.getId());
                 list = query.getResultList();
