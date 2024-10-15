@@ -3,6 +3,7 @@ package test;
 import model.Cat;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
 public class TestCat {
@@ -12,10 +13,12 @@ public class TestCat {
             if (sessionFactory != null) {
                 Session session = sessionFactory.openSession();
                 try {
+                    Transaction tr = session.beginTransaction();
                     Cat cat1 = new Cat();
                     cat1.setName("Tom");
                     cat1.setSex(true);
                     session.save(cat1);
+                    tr.commit();
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
