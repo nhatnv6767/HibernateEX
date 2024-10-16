@@ -18,9 +18,16 @@ public class TestTemp {
 //            Person p1 = new Person("Binh", new Date(System.currentTimeMillis()), null);
 //            session.save(p1);
 
-            Person p1 = session.find(Person.class, 1);
-            Person p2 = new Person("c.Trang", new Date(System.currentTimeMillis()), p1);
-            session.save(p2);
+//            Person p1 = session.find(Person.class, 1L);
+//            Person p2 = new Person("c.Trang", new Date(System.currentTimeMillis()), p1);
+//            session.save(p2);
+
+            Person p1 = session.find(Person.class, 1L);
+            Person p2 = session.find(Person.class, 2L);
+
+            p1.setSpouse(p2);
+            session.saveOrUpdate(p1);
+
             tr.commit();
             session.close();
         }
