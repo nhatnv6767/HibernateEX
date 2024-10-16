@@ -6,12 +6,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
+import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PersonDAO implements DAOInterface {
+public class PersonDAO implements DAOInterface<Person> {
+
     @Override
-    public List sellectAll() {
+    public List<Person> sellectAll() {
         List<Person> list = new ArrayList<>();
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -21,6 +23,10 @@ public class PersonDAO implements DAOInterface {
 
 
                 String hql = "from Person";
+                Query query = session.createQuery(hql);
+                list = query.getResultList();
+                tr.commit();
+                session.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -29,22 +35,22 @@ public class PersonDAO implements DAOInterface {
     }
 
     @Override
-    public Object selectById(Object o) {
+    public Person selectById(Person person) {
         return null;
     }
 
     @Override
-    public boolean insert(Object o) {
+    public boolean insert(Person person) {
         return false;
     }
 
     @Override
-    public boolean update(Object o) {
+    public boolean update(Person person) {
         return false;
     }
 
     @Override
-    public boolean delete(Object o) {
+    public boolean delete(Person person) {
         return false;
     }
 }

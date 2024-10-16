@@ -1,5 +1,6 @@
 package test;
 
+import dao.PersonDAO;
 import model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,11 @@ import java.util.List;
 
 public class Test2 {
     public static void main(String[] args) {
+//        checkMerried();
+        selectAllTest();
+    }
+
+    public static void checkMerried() {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         if (sessionFactory != null) {
             Session session = sessionFactory.openSession();
@@ -29,6 +35,15 @@ public class Test2 {
 
             tr.commit();
             session.close();
+        }
+    }
+
+    public static void selectAllTest() {
+        PersonDAO personDAO = new PersonDAO();
+
+        List<Person> list = personDAO.sellectAll();
+        for (Person p : list) {
+            System.out.println(p.toString());
         }
     }
 }

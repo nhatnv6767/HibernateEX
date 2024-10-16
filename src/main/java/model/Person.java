@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "tbl_PERSON")
@@ -64,13 +66,25 @@ public class Person {
         this.spouse = spouse;
     }
 
+    //    public String toString() {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//        String formattedDateOfBirth = dateOfBirth.toLocalDate().format(formatter);
+//        return "Person{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", dateOfBirth=" + formattedDateOfBirth +
+//                ", spouse=" + spouse +
+//                '}';
+//    }
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDateOfBirth = dateOfBirth.toLocalDate().format(formatter);
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
-                ", spouse=" + spouse +
+                (spouse != null ? ", spouseId=" + spouse.getId() : "") + // Print spouse ID only
                 '}';
     }
 }
