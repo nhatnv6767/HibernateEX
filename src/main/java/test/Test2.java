@@ -15,13 +15,15 @@ public class Test2 {
             Session session = sessionFactory.openSession();
             Transaction tr = session.beginTransaction();
 
-            String hql = "SELECT p.name, p.spouse.name FROM Person p";
+            String hql = "SELECT p.id,  p.name,p.spouse.id, p.spouse.name FROM Person p";
             List<Object[]> results = session.createQuery(hql).list();
 
             for (Object[] rs : results) {
-                String name = rs[0].toString();
-                String spouseName = rs[1].toString();
-                System.out.println(name + " - " + spouseName);
+                String id = rs[0].toString();
+                String name = rs[1].toString();
+                String spouseId = rs[2].toString();
+                String spouseName = rs[3].toString();
+                System.out.println(id + " " + name + " married with " + spouseId + " " + spouseName);
             }
 
 
