@@ -19,6 +19,12 @@ public class Person {
     public Person() {
     }
 
+    public Person(String name, Date dateOfBirth, Person spouse) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+        this.spouse = spouse;
+    }
+
     public Person(long id, String name, Date dateOfBirth, Person spouse) {
         this.id = id;
         this.name = name;

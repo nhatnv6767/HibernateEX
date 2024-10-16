@@ -18,7 +18,7 @@
         <!--        hien thi ra cau lenh sql trong console-->
         <property name="show_sql">true</property>
         <!--        mapping-->
-        <mapping class="model.Cat"/>
+        <mapping class="model.Person"/>
         <!--        <property name="hbm2ddl.auto">create</property>-->
         <!--        <property name="current_session_context_class">thread</property>-->
 
