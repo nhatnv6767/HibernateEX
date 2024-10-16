@@ -38,21 +38,93 @@ public class CatDAO implements DAOInterface<Cat> {
 
     @Override
     public Cat selectById(Cat cat) {
-        return null;
+//        List<Cat> list = new ArrayList<>();
+        Cat result = null;
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+
+                // thuc thi cau lenh HQL
+//                String hql = "from Cat c WHERE c.id=:id";
+//                Query query = session.createQuery(hql);
+//                query.setParameter("id", cat.getId());
+//                list = query.getResultList();
+
+                // Presistent
+                result = session.get(Cat.class, 2);
+
+                // Detached
+                tr.commit();
+
+                session.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public boolean saveOrUpdate(Cat cat) {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+
+                // thuc thi cau lenh HQL
+
+                // persist(): khong tra ve id, khong bao loi khi gap loi
+
+                // chi luu khi chua ton tai
+//                session.save(cat);
+                // them moi khi chua ton tai, cap nhat du lieu khi da ton tai
+                session.saveOrUpdate(cat);
+
+                tr.commit();
+
+                session.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     @Override
     public boolean insert(Cat cat) {
-        return false;
+        return saveOrUpdate(cat);
     }
 
     @Override
     public boolean update(Cat cat) {
-        return false;
+        return saveOrUpdate(cat);
     }
 
     @Override
     public boolean delete(Cat cat) {
+        try {
+            SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+            if (sessionFactory != null) {
+                Session session = sessionFactory.openSession();
+                Transaction tr = session.beginTransaction();
+
+                // thuc thi cau lenh HQL
+                // chi luu khi chua ton tai
+//                session.save(cat);
+                // them moi khi chua ton tai, cap nhat du lieu khi da ton tai
+                session.delete(cat);
+
+                tr.commit();
+
+                session.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

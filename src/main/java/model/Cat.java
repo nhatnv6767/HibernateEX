@@ -15,8 +15,7 @@ public class Cat {
     public Cat() {
     }
 
-    public Cat(Integer id, String name, Date dateOfBirth, Boolean sex) {
-        this.id = id;
+    public Cat(String name, Date dateOfBirth, Boolean sex) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.sex = sex;
@@ -55,5 +54,15 @@ public class Cat {
 
     public void setSex(Boolean sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public String toString() {
+        return "Cat{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", sex=" + sex +
+                '}';
     }
 }
