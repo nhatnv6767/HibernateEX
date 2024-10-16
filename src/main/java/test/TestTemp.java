@@ -15,9 +15,12 @@ public class TestTemp {
             Session session = sessionFactory.openSession();
             Transaction tr = session.beginTransaction();
 
-            Person p1 = new Person("Binh", new Date(System.currentTimeMillis()), null);
-            session.save(p1);
+//            Person p1 = new Person("Binh", new Date(System.currentTimeMillis()), null);
+//            session.save(p1);
 
+            Person p1 = session.find(Person.class, 1);
+            Person p2 = new Person("c.Trang", new Date(System.currentTimeMillis()), p1);
+            session.save(p2);
             tr.commit();
             session.close();
         }
