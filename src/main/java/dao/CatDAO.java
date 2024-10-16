@@ -39,7 +39,7 @@ public class CatDAO implements DAOInterface<Cat> {
     @Override
     public Cat selectById(Cat cat) {
 //        List<Cat> list = new ArrayList<>();
-        Cat result = new Cat();
+        Cat result = null;
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if (sessionFactory != null) {
@@ -74,6 +74,9 @@ public class CatDAO implements DAOInterface<Cat> {
                 Transaction tr = session.beginTransaction();
 
                 // thuc thi cau lenh HQL
+
+                // persist(): khong tra ve id, khong bao loi khi gap loi
+
                 // chi luu khi chua ton tai
 //                session.save(cat);
                 // them moi khi chua ton tai, cap nhat du lieu khi da ton tai
