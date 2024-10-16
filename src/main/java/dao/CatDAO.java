@@ -38,8 +38,8 @@ public class CatDAO implements DAOInterface<Cat> {
 
     @Override
     public Cat selectById(Cat cat) {
-//        List<Cat> list = new ArrayList<>();
-        Cat result = null;
+        List<Cat> list = new ArrayList<>();
+
         try {
             SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
             if (sessionFactory != null) {
@@ -47,15 +47,11 @@ public class CatDAO implements DAOInterface<Cat> {
                 Transaction tr = session.beginTransaction();
 
                 // thuc thi cau lenh HQL
-//                String hql = "from Cat c WHERE c.id=:id";
-//                Query query = session.createQuery(hql);
-//                query.setParameter("id", cat.getId());
-//                list = query.getResultList();
+                String hql = "from Cat c WHERE c.id=:id";
+                Query query = session.createQuery(hql);
+                query.setParameter("id", cat.getId());
+                list = query.getResultList();
 
-                // Presistent
-                result = session.get(Cat.class, 2);
-
-                // Detached
                 tr.commit();
 
                 session.close();
@@ -63,7 +59,11 @@ public class CatDAO implements DAOInterface<Cat> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
+        if (list.size() > 0) {
+            return list.get(0);
+        } else {
+            return null;
+        }
     }
 
     public boolean saveOrUpdate(Cat cat) {

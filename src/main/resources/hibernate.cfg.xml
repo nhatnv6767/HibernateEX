@@ -7,7 +7,7 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.113:3306/cat</property>
+        <property name="hibernate.connection.url">jdbc:mysql://192.168.1.113:3306/example_1</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">123456</property>
         <!--        xoa va tao lai tu dau-->
@@ -18,7 +18,7 @@
         <!--        hien thi ra cau lenh sql trong console-->
         <property name="show_sql">true</property>
         <!--        mapping-->
-        <mapping class="model.Cat"/>
+        <mapping class="model.Person"/>
         <!--        <property name="hbm2ddl.auto">create</property>-->
         <!--        <property name="current_session_context_class">thread</property>-->
 
