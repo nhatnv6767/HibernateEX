@@ -8,12 +8,12 @@ import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
 import java.sql.Date;
-import java.util.List;
 
 public class TestAuthorBook {
     public static void main(String[] args) {
 //        testAuthorBook();
-        testAuthorBook2();
+//        testAuthorBook2();
+        loadAuthorByBook();
     }
 
     public static void testAuthorBook() {
@@ -53,6 +53,21 @@ public class TestAuthorBook {
             session.saveOrUpdate(b3);
             session.saveOrUpdate(b4);
             session.saveOrUpdate(b5);
+
+
+            tr.commit();
+            session.close();
+        }
+    }
+
+    public static void loadAuthorByBook() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        if (sessionFactory != null) {
+            Session session = sessionFactory.openSession();
+            Transaction tr = session.beginTransaction();
+
+            Book b1 = session.find(Book.class, "B01");
+            System.out.println("Tac gia cua sach: " + b1.getTitle() + " La " + b1.getAuthor().getName());
 
 
             tr.commit();
