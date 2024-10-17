@@ -2,6 +2,8 @@ package model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Book {
@@ -9,6 +11,9 @@ public class Book {
     private String book_id;
     private String title;
     private double price;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     public Book() {
     }
@@ -41,6 +46,14 @@ public class Book {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
