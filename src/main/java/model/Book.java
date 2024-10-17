@@ -18,10 +18,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(String book_id, String title, double price) {
+    public Book(String book_id, String title, double price, Author author) {
         this.book_id = book_id;
         this.title = title;
         this.price = price;
+        this.author = author;
     }
 
     public String getBook_id() {
