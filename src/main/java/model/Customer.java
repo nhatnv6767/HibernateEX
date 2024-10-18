@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Customer {
@@ -70,7 +71,7 @@ public class Customer {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", orders=" + orders +
+                ", orders=" + orders.stream().map(My_Order::getOrder_id).collect(Collectors.toList()) +
                 '}';
     }
 }
