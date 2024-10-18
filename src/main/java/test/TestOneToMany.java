@@ -1,7 +1,7 @@
 package test;
 
 import model.Customer;
-import model.Order;
+import model.My_Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -22,12 +22,12 @@ public class TestOneToMany {
             Transaction tr = session.beginTransaction();
 
             Customer c1 = new Customer("001", "Le Thanh Than", "Nhat@gmail.com");
-            Order o1 = new Order("1", "TP.HCM", c1);
-            Order o2 = new Order("2", "TP.HCM", c1);
-            Order o3 = new Order("3", "TP.HCM", c1);
-            Order o4 = new Order("4", "TP.HCM", c1);
+            My_Order o1 = new My_Order("1", "TP.HCM", c1);
+            My_Order o2 = new My_Order("2", "TP.HCM", c1);
+            My_Order o3 = new My_Order("3", "TP.HCM", c1);
+            My_Order o4 = new My_Order("4", "TP.HCM", c1);
 
-            List<Order> list = new ArrayList<>();
+            List<My_Order> list = new ArrayList<>();
             list.add(o1);
             list.add(o2);
             list.add(o3);
@@ -36,6 +36,10 @@ public class TestOneToMany {
             c1.setOrders(list);
 
             session.saveOrUpdate(c1);
+            session.saveOrUpdate(o1);
+            session.saveOrUpdate(o2);
+            session.saveOrUpdate(o3);
+            session.saveOrUpdate(o4);
 
 
             tr.commit();

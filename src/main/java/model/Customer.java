@@ -14,7 +14,7 @@ public class Customer {
 
     // dua tren thang customer, customer ra doi truoc, roi moi sinh ra thang order
     @OneToMany(mappedBy = "customer")
-    private List<Order> orders;
+    private List<My_Order> orders;
 
     public Customer() {
     }
@@ -25,7 +25,7 @@ public class Customer {
         this.email = email;
     }
 
-    public Customer(String id, String name, String email, List<Order> orders) {
+    public Customer(String id, String name, String email, List<My_Order> orders) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -56,11 +56,11 @@ public class Customer {
         this.email = email;
     }
 
-    public List<Order> getOrders() {
+    public List<My_Order> getOrders() {
         return orders;
     }
 
-    public void setOrders(List<Order> orders) {
+    public void setOrders(List<My_Order> orders) {
         this.orders = orders;
     }
 

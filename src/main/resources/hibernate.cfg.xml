@@ -19,7 +19,7 @@
         <property name="show_sql">true</property>
         <!--        mapping-->
         <mapping class="model.Customer"/>
-        <mapping class="model.Order"/>
+        <mapping class="model.My_Order"/>
         <!--        <property name="hbm2ddl.auto">create</property>-->
         <!--        <property name="current_session_context_class">thread</property>-->
 
