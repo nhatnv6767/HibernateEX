@@ -1,8 +1,12 @@
 package model;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class NhanVien {
@@ -10,6 +14,9 @@ public class NhanVien {
     private String id;
     private String hoVaTen;
     private Date ngaySinh;
+
+    @ManyToMany(mappedBy = "danhSachNhanVien")
+    private Set<CuocHop> danhSachCuocHop = new HashSet<CuocHop>();
 
     public NhanVien() {
     }
