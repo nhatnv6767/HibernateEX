@@ -18,8 +18,8 @@
         <!--        hien thi ra cau lenh sql trong console-->
         <property name="show_sql">true</property>
         <!--        mapping-->
-        <mapping class="model.Author"/>
-        <mapping class="model.Book"/>
+        <mapping class="model.Customer"/>
+        <mapping class="model.Order"/>
         <!--        <property name="hbm2ddl.auto">create</property>-->
         <!--        <property name="current_session_context_class">thread</property>-->
 
