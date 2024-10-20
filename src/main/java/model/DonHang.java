@@ -14,7 +14,7 @@ public class DonHang {
     private Date ngayMua;
 
     // ALL:
-    @OneToMany(mappedBy = "donHang", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "donHang", cascade = CascadeType.REMOVE)
     private List<ChiTietDonHang> danhSachChiTiet = new ArrayList<>();
 
     public DonHang() {

@@ -84,7 +84,7 @@ public class GeneralTest {
             dh1.addCTDH(ctdh1);
             dh1.addCTDH(ctdh2);
 
-            session.saveOrUpdate(ctdh1);
+            session.saveOrUpdate(dh1);
 
 //            DonHang dh = session.load(DonHang.class, 4);
 //            session.remove(dh);
