@@ -14,7 +14,7 @@ public class DonHang {
     private Date ngayMua;
 
     // ALL:
-    @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "donHang", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ChiTietDonHang> danhSachChiTiet = new ArrayList<>();
 
     public DonHang() {

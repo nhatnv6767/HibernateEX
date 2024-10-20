@@ -12,7 +12,7 @@ public class ChiTietDonHang {
     private double giaBan;
     private double thanhTien;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "donhang_id")
     private DonHang donHang;
 
