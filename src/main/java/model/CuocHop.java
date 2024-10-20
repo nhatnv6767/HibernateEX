@@ -58,4 +58,8 @@ public class CuocHop {
     public void setThoiGian(Date thoiGian) {
         this.thoiGian = thoiGian;
     }
+
+    public void addNhanVien(NhanVien nv) {
+        this.danhSachNhanVien.add(nv);
+    }
 }
