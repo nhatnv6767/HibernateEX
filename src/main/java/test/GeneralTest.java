@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import utils.HibernateUtil;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -126,6 +127,10 @@ public class GeneralTest {
             DonHang dh = session.load(DonHang.class, 3036);
             long ketThuc = System.currentTimeMillis();
             System.out.println(dh.toString());
+            List<ChiTietDonHang> ds = dh.getDanhSachChiTiet();
+            for (ChiTietDonHang ctdh : ds) {
+                System.out.println(ctdh.toString());
+            }
             System.out.println("Thoi gian thuc hien cau lenh la: " + (ketThuc - batDau));
 
             tr.commit();
