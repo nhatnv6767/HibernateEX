@@ -1,8 +1,6 @@
 package test;
 
-import model.CuocHop;
-import model.Customer;
-import model.NhanVien;
+import model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,7 +11,8 @@ import java.util.List;
 
 public class GeneralTest {
     public static void main(String[] args) {
-        testManyToMany();
+//        testManyToMany();
+        testInheritance();
     }
 
     public static void testManyToMany() {
@@ -38,4 +37,24 @@ public class GeneralTest {
             session.close();
         }
     }
+
+    public static void testInheritance() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        if (sessionFactory != null) {
+            Session session = sessionFactory.openSession();
+            Transaction tr = session.beginTransaction();
+
+            GiaoVien gv = new GiaoVien("GV01", "Tran Thi Thanh Hien", new Date(100, 1, 30), "Hibernate");
+            SinhVien sv = new SinhVien("072234", "Sinh vien 1", new Date(105, 2, 15), 9.8);
+
+            session.saveOrUpdate(gv);
+            session.saveOrUpdate(sv);
+
+
+            tr.commit();
+            session.close();
+        }
+    }
+
+
 }
