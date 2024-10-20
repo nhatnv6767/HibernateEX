@@ -75,17 +75,17 @@ public class GeneralTest {
             ctdh1.setDonHang(dh1);
 
             ChiTietDonHang ctdh2 = new ChiTietDonHang();
-            ctdh1.setTenSanPham("Sau rieng");
-            ctdh1.setGiaBan(7000);
-            ctdh1.setSoLuong(50);
-            ctdh1.setThanhTien(50 * 7000);
-            ctdh1.setDonHang(dh1);
+            ctdh2.setTenSanPham("Sau rieng");
+            ctdh2.setGiaBan(7777);
+            ctdh2.setSoLuong(50);
+            ctdh2.setThanhTien(ctdh2.getSoLuong() * ctdh2.getGiaBan());
+            ctdh2.setDonHang(dh1);
 
             dh1.addCTDH(ctdh1);
             dh1.addCTDH(ctdh2);
 
             session.saveOrUpdate(dh1);
-            
+
 
             tr.commit();
             session.close();
