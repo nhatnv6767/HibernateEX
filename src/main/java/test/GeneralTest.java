@@ -63,29 +63,31 @@ public class GeneralTest {
             Session session = sessionFactory.openSession();
             Transaction tr = session.beginTransaction();
 
-            DonHang dh1 = new DonHang();
-            dh1.setTenKhachHang("Le bao lam");
-            dh1.setNgayMua(new Date(123, 1, 30));
+//            DonHang dh1 = new DonHang();
+//            dh1.setTenKhachHang("Le bao lam");
+//            dh1.setNgayMua(new Date(123, 1, 30));
+//
+//            ChiTietDonHang ctdh1 = new ChiTietDonHang();
+//            ctdh1.setTenSanPham("Mi tom Hao Hao");
+//            ctdh1.setGiaBan(5000);
+//            ctdh1.setSoLuong(5);
+//            ctdh1.setThanhTien(5 * 5000);
+//            ctdh1.setDonHang(dh1);
+//
+//            ChiTietDonHang ctdh2 = new ChiTietDonHang();
+//            ctdh2.setTenSanPham("Sau rieng");
+//            ctdh2.setGiaBan(7777);
+//            ctdh2.setSoLuong(50);
+//            ctdh2.setThanhTien(ctdh2.getSoLuong() * ctdh2.getGiaBan());
+//            ctdh2.setDonHang(dh1);
+//
+//            dh1.addCTDH(ctdh1);
+//            dh1.addCTDH(ctdh2);
+//
+//            session.saveOrUpdate(dh1);
 
-            ChiTietDonHang ctdh1 = new ChiTietDonHang();
-            ctdh1.setTenSanPham("Mi tom Hao Hao");
-            ctdh1.setGiaBan(5000);
-            ctdh1.setSoLuong(5);
-            ctdh1.setThanhTien(5 * 5000);
-            ctdh1.setDonHang(dh1);
-
-            ChiTietDonHang ctdh2 = new ChiTietDonHang();
-            ctdh2.setTenSanPham("Sau rieng");
-            ctdh2.setGiaBan(7777);
-            ctdh2.setSoLuong(50);
-            ctdh2.setThanhTien(ctdh2.getSoLuong() * ctdh2.getGiaBan());
-            ctdh2.setDonHang(dh1);
-
-            dh1.addCTDH(ctdh1);
-            dh1.addCTDH(ctdh2);
-
-            session.saveOrUpdate(dh1);
-
+            DonHang dh = session.load(DonHang.class, 4);
+            session.remove(dh);
 
             tr.commit();
             session.close();
