@@ -7,7 +7,7 @@ import javax.persistence.InheritanceType;
 import java.sql.Date;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class ConNguoi {
     @Id
     private String id;
