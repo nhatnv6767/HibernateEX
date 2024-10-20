@@ -125,12 +125,12 @@ public class GeneralTest {
 
             long batDau = System.currentTimeMillis();
             DonHang dh = session.load(DonHang.class, 3036);
-            long ketThuc = System.currentTimeMillis();
             System.out.println(dh.toString());
             List<ChiTietDonHang> ds = dh.getDanhSachChiTiet();
             for (ChiTietDonHang ctdh : ds) {
                 System.out.println(ctdh.toString());
             }
+            long ketThuc = System.currentTimeMillis();
             System.out.println("Thoi gian thuc hien cau lenh la: " + (ketThuc - batDau));
 
             tr.commit();
