@@ -8,6 +8,7 @@ import utils.HibernateUtil;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
 
 public class GeneralTest {
     public static void main(String[] args) {
@@ -83,6 +84,38 @@ public class GeneralTest {
 
             dh1.addCTDH(ctdh1);
             dh1.addCTDH(ctdh2);
+
+            session.saveOrUpdate(dh1);
+
+//            DonHang dh = session.load(DonHang.class, 2);
+//            session.remove(dh);
+
+            tr.commit();
+            session.close();
+        }
+    }
+
+    public static void testLazyEager() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        if (sessionFactory != null) {
+            Session session = sessionFactory.openSession();
+            Transaction tr = session.beginTransaction();
+
+            DonHang dh1 = new DonHang();
+            dh1.setTenKhachHang("Trần Tiểu Xuân");
+            dh1.setNgayMua(new Date(123, 1, 30));
+
+            for (int i = 0; i < 1000000; i++) {
+                Random rand = new Random();
+                ChiTietDonHang ctdh1 = new ChiTietDonHang();
+                ctdh1.setTenSanPham("Sản phẩm " + i + 1);
+                ctdh1.setGiaBan(rand.nextInt(90000));
+                ctdh1.setSoLuong(rand.nextInt(60));
+                ctdh1.setThanhTien(ctdh1.getGiaBan() * ctdh1.getSoLuong());
+                ctdh1.setDonHang(dh1);
+                dh1.addCTDH(ctdh1);
+            }
+
 
             session.saveOrUpdate(dh1);
 
