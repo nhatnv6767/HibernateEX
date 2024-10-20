@@ -1,14 +1,20 @@
 package model;
 
+import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class DonHang {
+    @Id
+    @GeneratedValue
     private int id;
     private String tenKhachHang;
     private Date ngayMua;
 
+    // ALL:
+    @OneToMany(mappedBy = "donhang", cascade = CascadeType.ALL)
     private List<ChiTietDonHang> danhSachChiTiet = new ArrayList<>();
 
     public DonHang() {
@@ -51,5 +57,9 @@ public class DonHang {
 
     public void setDanhSachChiTiet(List<ChiTietDonHang> danhSachChiTiet) {
         this.danhSachChiTiet = danhSachChiTiet;
+    }
+
+    public void addCTDH(ChiTietDonHang ctdh) {
+        this.danhSachChiTiet.add(ctdh);
     }
 }

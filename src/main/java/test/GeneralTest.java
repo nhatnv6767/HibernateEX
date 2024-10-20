@@ -12,7 +12,8 @@ import java.util.List;
 public class GeneralTest {
     public static void main(String[] args) {
 //        testManyToMany();
-        testInheritance();
+//        testInheritance();
+        testCascade();
     }
 
     public static void testManyToMany() {
@@ -50,6 +51,41 @@ public class GeneralTest {
             session.saveOrUpdate(gv);
             session.saveOrUpdate(sv);
 
+
+            tr.commit();
+            session.close();
+        }
+    }
+
+    public static void testCascade() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        if (sessionFactory != null) {
+            Session session = sessionFactory.openSession();
+            Transaction tr = session.beginTransaction();
+
+            DonHang dh1 = new DonHang();
+            dh1.setTenKhachHang("Le bao lam");
+            dh1.setNgayMua(new Date(123, 1, 30));
+
+            ChiTietDonHang ctdh1 = new ChiTietDonHang();
+            ctdh1.setTenSanPham("Mi tom Hao Hao");
+            ctdh1.setGiaBan(5000);
+            ctdh1.setSoLuong(5);
+            ctdh1.setThanhTien(5 * 5000);
+            ctdh1.setDonHang(dh1);
+
+            ChiTietDonHang ctdh2 = new ChiTietDonHang();
+            ctdh1.setTenSanPham("Sau rieng");
+            ctdh1.setGiaBan(7000);
+            ctdh1.setSoLuong(50);
+            ctdh1.setThanhTien(50 * 7000);
+            ctdh1.setDonHang(dh1);
+
+            dh1.addCTDH(ctdh1);
+            dh1.addCTDH(ctdh2);
+
+            session.saveOrUpdate(dh1);
+            
 
             tr.commit();
             session.close();

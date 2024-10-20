@@ -1,12 +1,19 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
 public class ChiTietDonHang {
+    @Id
+    @GeneratedValue
     private int id;
     private String tenSanPham;
     private double soLuong;
     private double giaBan;
     private double thanhTien;
 
+    @ManyToOne
+    @JoinColumn(name = "donhang_id")
     private DonHang donHang;
 
     public ChiTietDonHang() {
