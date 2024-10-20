@@ -13,7 +13,7 @@ public class GeneralTest {
     public static void main(String[] args) {
 //        testManyToMany();
 //        testInheritance();
-        testCascade();
+//        testCascade();
     }
 
     public static void testManyToMany() {
@@ -86,7 +86,7 @@ public class GeneralTest {
 
             session.saveOrUpdate(dh1);
 
-//            DonHang dh = session.load(DonHang.class, 4);
+//            DonHang dh = session.load(DonHang.class, 2);
 //            session.remove(dh);
 
             tr.commit();
