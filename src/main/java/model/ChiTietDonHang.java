@@ -75,4 +75,15 @@ public class ChiTietDonHang {
     public void setDonHang(DonHang donHang) {
         this.donHang = donHang;
     }
+
+    @Override
+    public String toString() {
+        return "ChiTietDonHang{" +
+                "id=" + id +
+                ", tenSanPham='" + tenSanPham + '\'' +
+                ", soLuong=" + soLuong +
+                ", giaBan=" + giaBan +
+                ", thanhTien=" + thanhTien +
+                '}';
+    }
 }

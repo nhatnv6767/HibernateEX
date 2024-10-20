@@ -15,6 +15,7 @@ public class GeneralTest {
 //        testManyToMany();
 //        testInheritance();
 //        testCascade();
+        testLazyEager();
     }
 
     public static void testManyToMany() {
@@ -105,22 +106,27 @@ public class GeneralTest {
             dh1.setTenKhachHang("Trần Tiểu Xuân");
             dh1.setNgayMua(new Date(123, 1, 30));
 
-            for (int i = 0; i < 1000000; i++) {
-                Random rand = new Random();
-                ChiTietDonHang ctdh1 = new ChiTietDonHang();
-                ctdh1.setTenSanPham("Sản phẩm " + i + 1);
-                ctdh1.setGiaBan(rand.nextInt(90000));
-                ctdh1.setSoLuong(rand.nextInt(60));
-                ctdh1.setThanhTien(ctdh1.getGiaBan() * ctdh1.getSoLuong());
-                ctdh1.setDonHang(dh1);
-                dh1.addCTDH(ctdh1);
-            }
+//            for (int i = 0; i < 10000; i++) {
+//                Random rand = new Random();
+//                ChiTietDonHang ctdh1 = new ChiTietDonHang();
+//                ctdh1.setTenSanPham("Sản phẩm " + i + 1);
+//                ctdh1.setGiaBan(rand.nextInt(90000));
+//                ctdh1.setSoLuong(rand.nextInt(60));
+//                ctdh1.setThanhTien(ctdh1.getGiaBan() * ctdh1.getSoLuong());
+//                ctdh1.setDonHang(dh1);
+//                dh1.addCTDH(ctdh1);
+//            }
+//
+//
+//            session.saveOrUpdate(dh1);
 
-
-            session.saveOrUpdate(dh1);
-
-//            DonHang dh = session.load(DonHang.class, 2);
 //            session.remove(dh);
+
+            long batDau = System.currentTimeMillis();
+            DonHang dh = session.load(DonHang.class, 3036);
+            long ketThuc = System.currentTimeMillis();
+            System.out.println(dh.toString());
+            System.out.println("Thoi gian thuc hien cau lenh la: " + (ketThuc - batDau));
 
             tr.commit();
             session.close();

@@ -62,4 +62,13 @@ public class DonHang {
     public void addCTDH(ChiTietDonHang ctdh) {
         this.danhSachChiTiet.add(ctdh);
     }
+
+    @Override
+    public String toString() {
+        return "DonHang{" +
+                "id=" + id +
+                ", tenKhachHang='" + tenKhachHang + '\'' +
+                ", ngayMua=" + ngayMua +
+                '}';
+    }
 }
